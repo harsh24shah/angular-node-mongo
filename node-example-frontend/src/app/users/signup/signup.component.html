@@ -1,0 +1,25 @@
+<h1>Signup Page</h1>
+
+<form #signupForm="ngForm" (ngSubmit)="doSignup(signupForm)">
+  <div>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="user.fname" #fname="ngModel" name="fname" id="fname" required />
+    <show-error [control]="fname"></show-error>
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="user.email" emailvalidator #email="ngModel" name="email" id="email" required />
+    <show-error [control]="email"></show-error>
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="user.password" maxlength="5" #password="ngModel" name="password" id="password" required />
+    <show-error [control]="password"></show-error>
+  </div>
+  <div>
+    <button type="submit" [disabled]="signupForm.invalid">Create account</button>
+  </div>
+  <div>
+    Already have an account? <span (click)="moveToLogin()">Login</span>
+  </div>
+</form>

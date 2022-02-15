@@ -1,0 +1,20 @@
+<h1>Login Page</h1>
+
+<form #loginForm="ngForm" (ngSubmit)="doLogin(loginForm)">
+  <div>
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="user.email" emailvalidator #email="ngModel" name="email" id="email" required />
+    <show-error [control]="email"></show-error>
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="user.password" maxlength="8" #password="ngModel" name="password" id="password" required />
+    <show-error [control]="password"></show-error>
+  </div>
+  <div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </div>
+  <div>
+    new member? <span [routerLink]="['/signup']">Create an account</span>
+  </div>
+</form>
